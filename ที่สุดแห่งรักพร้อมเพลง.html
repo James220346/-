@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>𓆩♡𓆪ที่สุดแห่งรัก𓆩♡𓆪</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Mali&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Mali', sans-serif;
+      background: linear-gradient(#d4f1ff, #ffffff);
+      text-align: center;
+      color: #333;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-top: 1.2em;
+      animation: floatName 2s ease-in-out infinite, colorCycle 6s linear infinite;
+    }
+
+    .apology-box {
+      background: #fdf5f5;
+      border: 2px dashed #ffb6c1;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 85%;
+      max-width: 600px;
+      font-size: 1.15em;
+      color: #a83279;
+      font-weight: bold;
+      line-height: 1.9em;
+      text-align: left;
+      box-shadow: 0 0 15px rgba(255, 192, 203, 0.25);
+    }
+
+    .love-name {
+      font-size: 2em;
+      font-weight: bold;
+      margin: 0.5em 0 1em 0;
+      animation: floatName 2s ease-in-out infinite, colorCycle 6s linear infinite;
+    }
+
+    button {
+      background: #ff88aa;
+      color: white;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 15px;
+      padding: 0.8em 1.5em;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      margin: 10px;
+    }
+
+    button:hover {
+      background: #ff5e93;
+    }
+
+    @keyframes floatName {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes colorCycle {
+      0%   { color: #ff4d6d; }
+      25%  { color: #ffb347; }
+      50%  { color: #6f42c1; }
+      75%  { color: #28c7fa; }
+      100% { color: #ff4d6d; }
+    }
+
+    .hearts {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: float 6s infinite;
+    }
+
+    .heart::before, .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { top: 0; left: -10px; }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>𓆩♡𓆪ที่สุดแห่งรัก𓆩♡𓆪</h1>
+
+  <div class="apology-box">
+    ผมขอโทษนะคร้าบ เพลงที่ผมร้องเนื้อหามันรุนแรงจริง แต่ผมไม่ได้ว่าพี่ พูดไปก็เหมือนแก้ตัวแล้ว<br><br>
+    เรื่องเพลงคลื่น ผมเป็นคนร้องเอง แม่ยาไม่ได้บอกให้ร้อง ถ้าจะโกรธ โกรธผมคนเดียวนะครับ<br><br>
+    แล้วเรื่องที่พี่ถามว่าใครสำคัญที่สุด ผมบอกแม่ยา ผมแค่อยากให้พี่กับแม่ยาคุยกัน เลิกบล็อกกัน ไม่มีปัญหาต่อกัน<br><br>
+    แต่ตอนนี้มันก็คงจะยากแล้ว พี่ก็คงมีความสุขดีกว่าที่คุยกับผม<br><br>
+    ผมขอโทษจริงๆนะคร้าบ<br><br>
+    แต่สุดท้ายนี้ ขอให้พี่มีความสุขมากๆนะคร้าบ 💗<br><br>
+    จากคนที่รักพี่ที่สุด (ที่สุดแห่งรักคนนี้)
+  </div>
+
+  <div class="love-name">เค้าขอโทษนะ 💖</div>
+
+  <button onclick="showPopup()">ยกโทษให้เค้าเถอะน้าาา 💖</button>
+
+  <div class="hearts" id="hearts"></div>
+
+  <audio id="bgmusic" loop autoplay>
+    <source src="audio_koy_thailand.mp3" type="audio/mp3">
+  </audio>
+  <br>
+  <button onclick="toggleMusic()">🔈 เปิด/ปิดเพลง</button>
+
+  <script>
+    const heartContainer = document.getElementById('hearts');
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      heartContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 300);
+
+    const music = document.getElementById('bgmusic');
+    function toggleMusic() {
+      if (music.paused) music.play();
+      else music.pause();
+    }
+
+    function showPopup() {
+      Swal.fire({
+        title: 'เย้! ขอบคุณที่ให้อภัยนะครับ 🥹💗',
+        text: 'เค้าจะไม่ทำให้เธอเสียใจอีกแล้วนะ!',
+        icon: 'success',
+        confirmButtonText: 'เค้ารักเธอที่สุดเลย 💘'
+      });
+    }
+  </script>
+</body>
+</html>
